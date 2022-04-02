@@ -17,7 +17,7 @@ Girl's power
 This project creates a database for theater ticketing system that records information about theaters, movies, tickets etc. and the relationships among them. It is comprised of 4 domain objects, and 3 end users that inherits from people object and one enum object.
 
 ## user_data_models_description:
-In this project, there are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one to manager relationship, a manager manages multiple employees and an employee only has one manager.
+In this project, there are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
 
 ## domain_object_data_models_description:
 In this project, there are 4 domain objets: **theater, section, movie and ticket**.
@@ -29,7 +29,7 @@ There are 2 relationships between end users and domain objects. **audience to ti
 there are multiple relationships among domain objects. For theater and movie, they are many-to-many relationship and is combined by section. In each section, is uses theater_id and movie_id as foreign key, so it is one-to-many relationship to movie and theater. Section and ticket is one-to-one relationship, each section is related to a ticket and each ticket is related to a section.
 
 ## enumeration_description:
-there is one enum in this project: Type, which refers to the movie types, including **drama, romance, thriller, comedy, documentary**.
+there is one enum in this project: **Type**, which refers to the movie types, including **drama, romance, thriller, comedy, documentary**.
 
 ## user_interface_requirements:
 **For audiences:**
