@@ -6,7 +6,7 @@ project-SP22-bowenwu0826-liqingzhao-yihan
 Movie_app
 
 ## team_name:
-LWX
+Girl's power
 
 ## team_members:
 - Qingzhao Li
