@@ -33,23 +33,23 @@ there is one enum in this project: Type, which refers to the movie types, includ
 
 ## user_interface_requirements:
 **For audiences:**
-Theater List: displays all the theaters and their info.
-Movie List: displays all the movies that are **currently online**.
-My Ticket List: displays all the **ticket history of this audience**.
-Ticket Editor: display the **current ticket**, and options to **cancel, change** this ticket.
+- Theater List: displays all the theaters and their info.
+- Movie List: displays all the movies that are **currently online**.
+- My Ticket List: displays all the **ticket history of this audience**.
+- Ticket Editor: display the **current ticket**, and options to **cancel, change** this ticket.
 
 **For managers:**
-Theater List: displays all the theaters and their info.
-Theater Editor: displays all the theaters and their info and options to add, delete and edit theaters.
-Movie List: displays all the **movies including history**.
-Movie Editor: displays all the **movies including history** and options to add, delete and edit movies.
-Section List: displays all the section info.
-Section Editor: displays all the section info and options to add, delete and edit section info like showtime, rooms etc.
-Ticket List: displays all the **ticket history**.
-Ticket Editor: display the **current tickets**, and options to **add, cancel, change** tickets.
+- Theater List: displays all the theaters and their info.
+- Theater Editor: displays all the theaters and their info and options to add, delete and edit theaters.
+- Movie List: displays all the **movies including history**.
+- Movie Editor: displays all the **movies including history** and options to add, delete and edit movies.
+- Section List: displays all the section info.
+- Section Editor: displays all the section info and options to add, delete and edit section info like showtime, rooms etc.
+- Ticket List: displays all the **ticket history**.
+- Ticket Editor: display the **current tickets**, and options to **add, cancel, change** tickets.
 
 **For employees:**
-Section List: displays all the theaters and their info.
-Section Editor: displays all the section info and options to add, delete and edit section info like showtime, rooms etc.
-Ticket List: displays all the **ticket history**.
-Ticket Editor: display the **current tickets**, and options to **add, cancel, change** tickets.
+- Section List: displays all the theaters and their info.
+- Section Editor: displays all the section info and options to add, delete and edit section info like showtime, rooms etc.
+- Ticket List: displays all the **ticket history**.
+- Ticket Editor: display the **current tickets**, and options to **add, cancel, change** tickets.
