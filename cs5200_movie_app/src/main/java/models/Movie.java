@@ -2,6 +2,7 @@ package models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import models.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Movie {
   private String movie_name;
   private Type type;
 
-  @OneToMany(mappedBy = "Movie")
+  @OneToMany(mappedBy = "movie")
   @JsonIgnore
   private List<Section> sections;
 
@@ -48,12 +49,6 @@ public class Movie {
   }
 
   public void setType(Type type) {
-    this.type = type;
-  }
-
-  public Movie(int movie_id, String movie_name, Type type) {
-    this.movie_id = movie_id;
-    this.movie_name = movie_name;
     this.type = type;
   }
 

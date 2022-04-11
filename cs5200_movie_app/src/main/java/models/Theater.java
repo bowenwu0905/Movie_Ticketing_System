@@ -21,7 +21,7 @@ public class Theater {
   private String address;
   private Integer capacity;
 
-  @OneToMany(mappedBy = "Theater")
+  @OneToMany(mappedBy = "theater")
   @JsonIgnore
   private List<Section> sections;
 
@@ -31,16 +31,6 @@ public class Theater {
 
   public void setSections(List<Section> sections) {
     this.sections = sections;
-  }
-
-
-  public Theater(Integer theater_id, Integer manager_id, String name, String address,
-      Integer capacity) {
-    this.theater_id = theater_id;
-    this.manager_id = manager_id;
-    this.name = name;
-    this.address = address;
-    this.capacity = capacity;
   }
 
   public Integer getTheater_id() {
