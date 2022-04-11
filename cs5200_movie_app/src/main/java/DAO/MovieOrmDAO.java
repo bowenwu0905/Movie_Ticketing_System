@@ -14,37 +14,37 @@ public class MovieOrmDAO {
   @Autowired
   MovieRepository movieRepository;
 
-  @PostMapping("/api/movies")
+  @PostMapping("/girlspower/movies")
   public Movie createMovie(@RequestBody Movie movie){
     return movieRepository.save(movie);
   }
 
-  @GetMapping("/api/movies")
+  @GetMapping("/girlspower/movies")
   public List<Movie> findAllMovies(){
     return (List<Movie>) movieRepository.findAll();
   }
 
-  @GetMapping("/api/movies/{movieId}")
+  @GetMapping("/girlspower/movies/{movieId}")
   public Movie findMoviesById(
     @PathVariable("movieId") Integer id){
     return movieRepository.findById(id).get();
   }
 
-  @PutMapping("/api/movies/{movieId}")
+  @PutMapping("/girlspower/movies/{movieId}")
   public Movie updateMovie(
       @PathVariable("movieId") Integer id,
       @RequestBody() Movie newMovie) {
     Movie movie = this.findMoviesById(id);
     movie.setMovie_name(newMovie.getMovie_name());
+    movie.setType(newMovie.getType());
     return movieRepository.save(movie);
   }
 
-  @DeleteMapping("/api/courses/{movieId}")
+  @DeleteMapping("/girlspower/movies/{movieId}")
   public void deleteMovie(
       @PathVariable("movieId") Integer id) {
     movieRepository.deleteById(id);
   }
-
 
 
 }
