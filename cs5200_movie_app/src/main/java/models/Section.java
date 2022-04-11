@@ -24,7 +24,7 @@ public class Section {
   private Movie movie;
 
   @ManyToOne
-  @JoinColumn(name = "theater_theater_id")
+  @JsonIgnore
   private Theater theater;
 
   public Theater getTheater() {
@@ -33,15 +33,6 @@ public class Section {
 
   public void setTheater(Theater theater) {
     this.theater = theater;
-  }
-
-  public Section(Integer section_id, Integer movie_id, Integer theater_id,
-      Timestamp showtime, Integer room_number) {
-    this.section_id = section_id;
-    this.movie_id = movie_id;
-    this.theater_id = theater_id;
-    this.showtime = showtime;
-    this.room_number = room_number;
   }
 
   public Integer getSection_id() {
