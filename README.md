@@ -26,7 +26,7 @@ In this project, there are 4 domain objets: **theater, section, movie and ticket
 There are 2 relationships between end users and domain objects. **audience to ticket** and **manager to theater**. The relationship between audience and ticket is one-to-many, an audience can buy a lot of tickets but a ticket is only related to one audience. The relationship between manager and theater is also one-to-many, one manager can manage multiple theaters and one theater can only be managed by one manager.
 
 ## domain_object_to_domain_object_relationship decsription:
-there are multiple relationships among domain objects. For theater and movie, they are many-to-many relationship and is combined by section. In each section, is uses theater_id and movie_id as foreign key, so it is one-to-many relationship to movie and theater. Section and ticket is one-to-one relationship, each section is related to a ticket and each ticket is related to a section.
+there are multiple relationships among domain objects. For theater and movie, they are many-to-many relationship and is combined by section. In each section, is uses theater_id and movie_id as foreign key, so it is one-to-many relationship to movie and theater. Section and ticket is one-to-many relationship, each section is related to multiple tickets.
 
 ## enumeration_description:
 there is one enum in this project: **Type**, which refers to the movie types, including **drama, romance, thriller, comedy, documentary**.
