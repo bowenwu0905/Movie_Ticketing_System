@@ -3,6 +3,7 @@ package models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.xml.bind.v2.model.core.ID;
 
+import java.util.Calendar;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
@@ -26,6 +27,10 @@ public class Section {
   @ManyToOne
   @JsonIgnore
   private Theater theater;
+
+  @OneToMany(mappedBy = "section")
+  @JsonIgnore
+  private Ticket ticket;
 
   public Theater getTheater() {
     return theater;
@@ -74,4 +79,5 @@ public class Section {
   public void setRoom_number(Integer room_number) {
     this.room_number = room_number;
   }
+
 }

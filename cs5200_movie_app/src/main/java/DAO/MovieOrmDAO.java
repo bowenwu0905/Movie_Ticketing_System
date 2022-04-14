@@ -1,7 +1,9 @@
 package DAO;
 
 import Repositories.MovieRepository;
+import Repositories.SectionRepository;
 import models.Movie;
+import models.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class MovieOrmDAO {
   @Autowired
   MovieRepository movieRepository;
 
+  @Autowired
+  SectionRepository sectionRepository;
+
   @PostMapping("/girlspower/movies")
   public Movie createMovie(@RequestBody Movie movie){
     return movieRepository.save(movie);
@@ -25,7 +30,7 @@ public class MovieOrmDAO {
   }
 
   @GetMapping("/girlspower/movies/{movieId}")
-  public Movie findMoviesById(
+  public Movie findMovieById(
     @PathVariable("movieId") Integer id){
     return movieRepository.findById(id).get();
   }
@@ -34,7 +39,7 @@ public class MovieOrmDAO {
   public Movie updateMovie(
       @PathVariable("movieId") Integer id,
       @RequestBody() Movie newMovie) {
-    Movie movie = this.findMoviesById(id);
+    Movie movie = this.findMovieById(id);
     movie.setMovie_name(newMovie.getMovie_name());
     movie.setType(newMovie.getType());
     return movieRepository.save(movie);
@@ -43,7 +48,13 @@ public class MovieOrmDAO {
   @DeleteMapping("/girlspower/movies/{movieId}")
   public void deleteMovie(
       @PathVariable("movieId") Integer id) {
+
+    List<Section> sections = this.findMovieById(id).getSections();
+    for(Section section: sections){
+      sectionRepository.deleteById(section.getSection_id());
+    }
     movieRepository.deleteById(id);
+
   }
 
 
