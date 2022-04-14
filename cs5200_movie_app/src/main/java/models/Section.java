@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.xml.bind.v2.model.core.ID;
 
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
@@ -30,7 +31,15 @@ public class Section {
 
   @OneToMany(mappedBy = "section")
   @JsonIgnore
-  private Ticket ticket;
+  private List<Ticket> tickets;
+
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
+
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
 
   public Theater getTheater() {
     return theater;
