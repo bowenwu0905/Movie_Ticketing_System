@@ -12,7 +12,7 @@ public class SectionMovieDao {
   SectionRepository sectionRepository;
   MovieRepository movieRepository;
 
-  @GetMapping("/addSection/{sectionId}/toMovie/{movieId}")
+  @GetMapping("/girlspower/addSection/{sectionId}/toMovie/{movieId}")
   public Movie addSectionToMovie(
       @PathVariable("sectionId") Integer sectionId,
       @PathVariable("movieId") Integer movieId
@@ -25,7 +25,7 @@ public class SectionMovieDao {
     return movie;
   }
 
-  @GetMapping("/removeSection/{sectionId}/fromMovie/{movieId}")
+  @GetMapping("/girlspower/removeSection/{sectionId}/fromMovie/{movieId}")
   public Movie removeSectionFromMovie(
       @PathVariable("sectionId") Integer sectionId,
       @PathVariable("movieId") Integer movieId

@@ -13,7 +13,7 @@ public class SectionTheaterDao {
   SectionRepository sectionRepository;
   TheaterRepository theaterRepository;
 
-  @GetMapping("/addSection/{sectionId}/toTheater/{theaterId}")
+  @GetMapping("/girlspower/addSection/{sectionId}/toTheater/{theaterId}")
   public Theater addSectionToTheater(
       @PathVariable("sectionId") Integer sectionId,
       @PathVariable("theaterId") Integer theaterId
@@ -26,7 +26,7 @@ public class SectionTheaterDao {
     return theater;
   }
 
-  @GetMapping("/removeSection/{sectionId}/toTheater/{theaterId}")
+  @GetMapping("/girlspower/removeSection/{sectionId}/toTheater/{theaterId}")
   public Theater removeSectionFromTheater(
       @PathVariable("sectionId") Integer sectionId,
       @PathVariable("theaterId") Integer theaterId
