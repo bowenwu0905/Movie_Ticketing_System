@@ -1,4 +1,4 @@
-package DAO;
+package daos;
 
 import Repositories.SectionRepository;
 import Repositories.TheaterRepository;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class TheaterOrmDAO {
+public class TheaterOrmDao {
   @Autowired
   TheaterRepository theaterRepository;
 
