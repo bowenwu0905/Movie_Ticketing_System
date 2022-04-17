@@ -1,4 +1,4 @@
-package DAO;
+package daos;
 
 import Repositories.PersonRepository;
 import java.sql.Date;

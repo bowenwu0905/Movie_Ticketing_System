@@ -1,4 +1,4 @@
-package DAO;
+package daos;
 
 import Repositories.MovieRepository;
 import Repositories.SectionRepository;
@@ -12,10 +12,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class MovieOrmDAO {
+public class MovieOrmDao {
   @Autowired
   MovieRepository movieRepository;
-
   @Autowired
   SectionRepository sectionRepository;
 

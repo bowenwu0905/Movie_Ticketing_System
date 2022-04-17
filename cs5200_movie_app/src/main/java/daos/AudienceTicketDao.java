@@ -1,10 +1,8 @@
-package DAO;
+package daos;
 
 import Repositories.AudienceRepository;
-import Repositories.SectionRepository;
 import Repositories.TicketRepository;
 import models.Audience;
-import models.Section;
 import models.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,7 @@
-package DAO;
+package daos;
 
 import Repositories.SectionRepository;
 import Repositories.TicketRepository;
-import java.util.Optional;
 import models.Section;
 import models.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class SectionTicketDao {
   public Section addTicketToSection(@PathVariable("ticket_id") int ticketID,
       @PathVariable("section_id") int sectionID){
     Ticket ticket = ticketRepository.findTicketByTicketId(ticketID);
-    Section section = sectionRepository.findSectionById(sectionID);
+    Section section = sectionRepository.findById(sectionID).get();
     ticket.setSection(section);
     section.getTickets().add(ticket);
     ticketRepository.save(ticket);
@@ -32,7 +31,7 @@ public class SectionTicketDao {
   public Section removeTicketFromSection(@PathVariable("ticket_id") int ticketID,
       @PathVariable("section_id") int sectionID){
     Ticket ticket = ticketRepository.findTicketByTicketId(ticketID);
-    Section section = sectionRepository.findSectionById(sectionID);
+    Section section = sectionRepository.findById(sectionID).get();
     ticket.setSection(null);
     section.getTickets().remove(ticket);
     ticketRepository.save(ticket);

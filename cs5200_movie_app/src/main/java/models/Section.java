@@ -21,6 +21,14 @@ public class Section {
   private Timestamp showtime;
   private Integer room_number;
 
+  public Movie getMovie() {
+    return movie;
+  }
+
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
+
   @ManyToOne
   @JsonIgnore
   private Movie movie;

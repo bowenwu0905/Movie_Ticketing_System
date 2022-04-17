@@ -1,4 +1,4 @@
-package DAO;
+package daos;
 
 import Repositories.AudienceRepository;
 import java.util.List;

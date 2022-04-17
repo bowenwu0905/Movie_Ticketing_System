@@ -1,11 +1,10 @@
-package DAO;
+package daos;
 
 
 import Repositories.MovieRepository;
 import Repositories.SectionRepository;
 import Repositories.TheaterRepository;
 import Repositories.TicketRepository;
-import javax.persistence.criteria.CriteriaBuilder.In;
 import models.Movie;
 import models.Section;
 import models.Theater;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class SectionOrmDAO {
+public class SectionOrmDao {
   @Autowired
   SectionRepository sectionRepository;
 
