@@ -20,13 +20,14 @@ public class TicketOrmDao {
   TicketRepository ticketRepository;
   AudienceTicketDao audienceTicketDao;
   SectionTicketDao sectionTicketDao;
+  AudienceOrmDao audienceOrmDao;
 
   @PostMapping("/girlspower/tickets/{section_id}/{audience_id}")
   public Ticket createTicket(@PathVariable("section_id") int sectionID,
       @PathVariable("audience_id") int audienceID,
       @RequestBody Ticket ticket){
-    ticketRepository.save(ticket);
-    int ticketID = ticket.getTicketID();
+    Ticket tempTicket = ticketRepository.save(ticket);
+    int ticketID = tempTicket.getTicketID();
     audienceTicketDao.addTicketToAudience(ticketID, audienceID);
     sectionTicketDao.addTicketToSection(ticketID, sectionID);
     return ticketRepository.save(ticket);
