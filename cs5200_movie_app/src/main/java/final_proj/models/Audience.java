@@ -22,13 +22,6 @@ public class Audience extends Person{
   @OneToMany(mappedBy = "audience")
   protected List<Ticket> tickets;
 
-  public Audience() {
-  }
-
-  public Audience(int personID) {
-    super(personID);
-  }
-
   public Audience(int personID, String firstName, String lastName, String userName,
       String password, String email, Date dateOfBirth, int audienceID, int cardNumber,
       int points) {
@@ -36,6 +29,10 @@ public class Audience extends Person{
     this.audienceID = audienceID;
     this.cardNumber = cardNumber;
     this.points = points;
+  }
+
+  public Audience() {
+
   }
 
   public List<Ticket> getTickets() {

@@ -16,13 +16,6 @@ public class Person {
   protected String email;
   protected Date dateOfBirth;
 
-  public Person(int personID) {
-    this.personID = personID;
-  }
-
-  public Person() {
-  }
-
   public Person(int personID, String firstName, String lastName, String userName,
       String password, String email, Date dateOfBirth) {
     this.personID = personID;
@@ -32,6 +25,10 @@ public class Person {
     this.password = password;
     this.email = email;
     this.dateOfBirth = dateOfBirth;
+  }
+
+  public Person() {
+
   }
 
   public int getPersonID() {
