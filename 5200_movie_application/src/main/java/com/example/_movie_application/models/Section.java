@@ -17,6 +17,8 @@ public class Section {
   private Timestamp showtime;
   private Integer room_number;
 
+
+
   public Movie getMovie() {
     return movie;
   }

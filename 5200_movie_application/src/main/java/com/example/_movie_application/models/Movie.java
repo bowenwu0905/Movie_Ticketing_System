@@ -1,6 +1,7 @@
 package com.example._movie_application.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Table;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,8 @@ public class Movie {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int movie_id;
   private String movie_name;
-  private Type type;
+  @Enumerated(EnumType.STRING)
+  private Type movie_type;
 
   @OneToMany(mappedBy = "movie")
   @JsonIgnore
@@ -43,11 +45,11 @@ public class Movie {
   }
 
   public Type getType() {
-    return type;
+    return movie_type;
   }
 
   public void setType(Type type) {
-    this.type = type;
+    this.movie_type = type;
   }
 
 }

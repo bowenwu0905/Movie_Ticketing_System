@@ -5,20 +5,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="persons")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "person_id")
   protected int personID;
+  @Column(name = "first_name")
   protected String firstName;
+  @Column(name = "last_name")
   protected String lastName;
+  @Column(name = "user_name")
   protected String userName;
   protected String password;
   protected String email;
+  @Column(name = "date_of_birth")
   protected Date dateOfBirth;
 
-  public Person(int personID) {
-    this.personID = personID;
-  }
+//  public Person(int personID) {
+//    this.personID = personID;
+//  }
 
   public Person() {
   }

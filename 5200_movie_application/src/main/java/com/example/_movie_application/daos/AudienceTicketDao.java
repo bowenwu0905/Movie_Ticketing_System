@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AudienceTicketDao {
+  @Autowired
   AudienceRepository audienceRepository;
+  @Autowired
   TicketRepository ticketRepository;
 
   @GetMapping("/girlspower/addTicket/{ticket_id}/toAudience/{audience_id}")
   public Audience addTicketToAudience(@PathVariable("ticket_id") int ticketID,
       @PathVariable("audience_id") int audienceID){
     Ticket ticket = ticketRepository.findTicketByTicketId(ticketID);
-    Audience audience = audienceRepository.findAudienceById(audienceID);
+    Audience audience = audienceRepository.findById(audienceID).get();
     ticket.setAudience(audience);
     audience.getTickets().add(ticket);
     ticketRepository.save(ticket);
@@ -29,7 +31,7 @@ public class AudienceTicketDao {
   public Audience removeTicketFromAudience(@PathVariable("ticket_id") int ticketID,
       @PathVariable("audience_id") int audienceID){
     Ticket ticket = ticketRepository.findTicketByTicketId(ticketID);
-    Audience audience = audienceRepository.findAudienceById(audienceID);
+    Audience audience = audienceRepository.findById(audienceID).get();
     ticket.setAudience(null);
     audience.getTickets().remove(ticket);
     ticketRepository.save(ticket);

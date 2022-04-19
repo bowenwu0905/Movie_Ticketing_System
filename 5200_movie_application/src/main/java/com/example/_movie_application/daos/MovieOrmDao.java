@@ -13,7 +13,9 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class MovieOrmDao {
+  @Autowired
   MovieRepository movieRepository;
+  @Autowired
   SectionRepository sectionRepository;
 
   @PostMapping("/girlspower/movies")
