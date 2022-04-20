@@ -1,5 +1,6 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="persons")
@@ -27,25 +29,8 @@ public class Person {
   protected String password;
   protected String email;
   @Column(name = "date_of_birth")
+  @JsonFormat(pattern = "yyyy-MM-dd")
   protected Date dateOfBirth;
-
-//  public Person(int personID) {
-//    this.personID = personID;
-//  }
-
-  public Person() {
-  }
-
-  public Person(int personID, String firstName, String lastName, String userName,
-      String password, String email, Date dateOfBirth) {
-    this.personID = personID;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.userName = userName;
-    this.password = password;
-    this.email = email;
-    this.dateOfBirth = dateOfBirth;
-  }
 
   public int getPersonID() {
     return personID;
