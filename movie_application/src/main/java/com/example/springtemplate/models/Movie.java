@@ -14,7 +14,7 @@ public class Movie {
   private int movie_id;
   private String movie_name;
 
-
+  @Enumerated(EnumType.STRING)
   private Movie_type movie_type;
 
   @OneToMany(mappedBy = "movie")

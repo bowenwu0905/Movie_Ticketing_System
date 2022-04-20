@@ -86,6 +86,9 @@ public class SectionOrmDao {
       Theater theater = section.getTheater();
       sectionTheaterDao.removeSectionFromTheater(id, theater.getTheater_id());
       sectionMovieDao.removeSectionFromMovie(id, movie.getMovie_id());
+      for(Ticket t : section.getTickets()){
+
+      }
       sectionRepository.deleteById(id);
 
   }
