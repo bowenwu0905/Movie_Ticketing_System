@@ -32,8 +32,9 @@ export const getSectionsByMovieId = (movieId) => {
             if (response.status !== 200) {
                 throw Error('Fail to get the sections');
             }
-            console.log(response.json());
-            return response.json();
+            let data = response.json();
+            console.log(data);
+            return data;
         })
 }
 
@@ -43,12 +44,14 @@ const createTicketUrl = `${SERVER_ORIGIN}/girlspower/tickets`;
 export const createTicket = (ticketInfo) => {
     return fetch(createTicketUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(ticketInfo)
+        body: ticketInfo,
     }).then((response) => {
         if (response.status !== 201) {
+            console.log(response);
             throw Error('Fail to buy a ticket!');
         }
     })
