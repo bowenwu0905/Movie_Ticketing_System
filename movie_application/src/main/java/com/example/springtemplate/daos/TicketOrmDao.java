@@ -56,10 +56,14 @@ public class TicketOrmDao {
   public void updateTicket(@PathVariable("ticketId") int ticketID,
       @RequestBody Ticket newTicket) {
     Ticket ticket = ticketRepository.findTicketByTicketId(ticketID);
-    ticket.setAudience(newTicket.getAudience());
+    audienceTicketDao.removeTicketFromAudience(ticketID, ticket.getAudienceID());
+    ticket.setAudienceID(newTicket.getAudienceID());
+    audienceTicketDao.addTicketToAudience(ticketID, ticket.getAudienceID());
     ticket.setPrice(newTicket.getPrice());
     ticket.setRefundable(newTicket.isRefundable());
-    ticket.setSection(newTicket.getSection());
+    sectionTicketDao.removeTicketFromSection(ticketID, ticket.getSectionID());
+    ticket.setSectionID(newTicket.getSectionID());
+    sectionTicketDao.addTicketToSection(ticketID, ticket.getSectionID());
     ticketRepository.save(ticket);
   }
 

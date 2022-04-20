@@ -18,9 +18,14 @@ public class TheaterOrmDao {
   SectionRepository sectionRepository;
   @Autowired
   SectionOrmDao sectionOrmDao;
+  @Autowired
+  ManagerTheaterDao managerTheaterDao;
 
   @PostMapping("/girlspower/theaters")
   public Theater createTheater(@RequestBody Theater theater){
+    theaterRepository.save(theater);
+    int theaterID = theater.getTheater_id();
+    managerTheaterDao.addTheaterToManager(theaterID, theater.getManager_id());
     return theaterRepository.save(theater);
   }
 
@@ -41,13 +46,17 @@ public class TheaterOrmDao {
     theater.setTheater_name(newTheater.getTheater_name());
     theater.setAddress(newTheater.getAddress());
     theater.setCapacity(newTheater.getCapacity());
+    managerTheaterDao.removeTheaterFromManager(id, theater.getManager_id());
+    theater.setTheater_id(newTheater.getTheater_id());
+    managerTheaterDao.addTheaterToManager(id, theater.getManager_id());
     return theaterRepository.save(theater);
   }
 
   @DeleteMapping("/girlspower/theaters/{theaterId}")
   public void deleteTheater(
       @PathVariable("theaterId") Integer id) {
-    List<Section> sections = this.findTheaterById(id).getSections();
+    Theater theater = this.findTheaterById(id);
+    List<Section> sections = theater.getSections();
     List<Integer> sectionsID = new ArrayList<>();
     for(Section section: sections){
       sectionsID.add(section.getSection_id());
@@ -55,6 +64,7 @@ public class TheaterOrmDao {
     for(Integer i : sectionsID) {
       sectionOrmDao.deleteSection(i);
     }
+    managerTheaterDao.removeTheaterFromManager(id, theater.getManager_id());
     theaterRepository.deleteById(id);
   }
 

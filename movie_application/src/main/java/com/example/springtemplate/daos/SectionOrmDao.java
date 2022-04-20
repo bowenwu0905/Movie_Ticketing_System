@@ -78,8 +78,12 @@ public class SectionOrmDao {
       @PathVariable("sectionId") Integer id,
       @RequestBody() Section newSection) {
     Section section = this.findSectionBySectionId(id);
+    sectionMovieDao.removeSectionFromMovie(id, section.getMovie_id());
     section.setMovie_id(newSection.getMovie_id());
+    sectionMovieDao.addSectionToMovie(id, section.getMovie_id());
+    sectionTheaterDao.removeSectionFromTheater(id, section.getTheater_id());
     section.setTheater_id(newSection.getTheater_id());
+    sectionTheaterDao.addSectionToTheater(id, section.getTheater_id());
     section.setShow_time(newSection.getShow_time());
     section.setRoom_number(newSection.getRoom_number());
     return sectionRepository.save(section);
