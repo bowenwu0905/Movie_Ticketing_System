@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +23,18 @@ public class Theater {
 
   @OneToMany(mappedBy = "theater")
   private List<Section> sections;
+
+  @ManyToOne
+  @JsonIgnore
+  private Manager manager;
+
+  public Manager getManager() {
+    return manager;
+  }
+
+  public void setManager(Manager manager) {
+    this.manager = manager;
+  }
 
   public Integer getTheater_id() {
     return theater_id;
