@@ -53,3 +53,21 @@ there is one enum in this project: **Type**, which refers to the movie types, in
 - Section Editor: displays all the section info and options to add, delete and edit section info like showtime, rooms etc.
 - Ticket List: displays all the **ticket history**.
 - Ticket Editor: display the **current tickets**, and options to **add, cancel, change** tickets.
+
+## instructions:
+
+**API Docs**
+API Docs can be found here: https://docs.google.com/document/d/1JSG1NxHEDDasLTgxNwou5Y-4Szg7bAmiJfF7S8qxLiQ/edit?usp=sharing
+
+**For frontend**
+cd to the frontend folder, then run **npm start**, the client could be found in http://localhost:3000/
+for the frontend we only implement some of the audience's usecases. the APIs that have been called in the client are:
+- findAllMovies()
+- findSectionsByMovieId()
+- createTicket()
+
+**For server**
+download the MovieApp-CreateTables.sql file and execute it, make sure the movieApp schema is present.
+cd to the movie_application folder, find resources/application.properties, edit the datasourse url, username and password.
+then click on start DemoApplication, the server is running on http://localhost:8080/
+All other tests in the API doc could be done using **postman**
