@@ -16,21 +16,12 @@ public class Theater {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer theater_id;
   private Integer manager_id;
-  private String name;
+  private String theater_name;
   private String address;
   private Integer capacity;
 
   @OneToMany(mappedBy = "theater")
-  @JsonIgnore
   private List<Section> sections;
-
-  public List<Section> getSections() {
-    return sections;
-  }
-
-  public void setSections(List<Section> sections) {
-    this.sections = sections;
-  }
 
   public Integer getTheater_id() {
     return theater_id;
@@ -48,12 +39,12 @@ public class Theater {
     this.manager_id = manager_id;
   }
 
-  public String getName() {
-    return name;
+  public String getTheater_name() {
+    return theater_name;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTheater_name(String theater_name) {
+    this.theater_name = theater_name;
   }
 
   public String getAddress() {
@@ -70,5 +61,13 @@ public class Theater {
 
   public void setCapacity(Integer capacity) {
     this.capacity = capacity;
+  }
+
+  public List<Section> getSections() {
+    return sections;
+  }
+
+  public void setSections(List<Section> sections) {
+    this.sections = sections;
   }
 }

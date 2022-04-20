@@ -41,7 +41,7 @@ public class MovieOrmDao {
       @RequestBody() Movie newMovie) {
     Movie movie = this.findMovieById(id);
     movie.setMovie_name(newMovie.getMovie_name());
-    movie.setType(newMovie.getType());
+    movie.setMovie_type(newMovie.getMovie_type());
     return movieRepository.save(movie);
   }
 

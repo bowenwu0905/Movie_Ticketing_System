@@ -18,24 +18,7 @@ public class Movie {
   private Movie_type movie_type;
 
   @OneToMany(mappedBy = "movie")
-  @JsonIgnore
   private List<Section> sections;
-
-  public void setType(Movie_type type) {
-    this.movie_type = type;
-  }
-
-  public Movie_type getType() {
-    return movie_type;
-  }
-
-  public List<Section> getSections() {
-    return sections;
-  }
-
-  public void setSections(List<Section> sections) {
-    this.sections = sections;
-  }
 
   public int getMovie_id() {
     return movie_id;
@@ -53,4 +36,19 @@ public class Movie {
     this.movie_name = movie_name;
   }
 
+  public Movie_type getMovie_type() {
+    return movie_type;
+  }
+
+  public void setMovie_type(Movie_type movie_type) {
+    this.movie_type = movie_type;
+  }
+
+  public List<Section> getSections() {
+    return sections;
+  }
+
+  public void setSections(List<Section> sections) {
+    this.sections = sections;
+  }
 }

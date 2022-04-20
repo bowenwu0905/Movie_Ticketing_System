@@ -35,7 +35,7 @@ public class TheaterOrmDao {
   public Theater updateTheater(@PathVariable("theaterId") Integer id,
       @RequestBody() Theater newTheater){
     Theater theater = this.findTheaterById(id);
-    theater.setName(newTheater.getName());
+    theater.setTheater_name(newTheater.getTheater_name());
     theater.setAddress(newTheater.getAddress());
     theater.setCapacity(newTheater.getCapacity());
     return theaterRepository.save(theater);

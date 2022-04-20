@@ -35,11 +35,16 @@ public class SectionOrmDao {
   @Autowired
   TicketRepository ticketRepository;
 
+  @Autowired
   SectionTheaterDao sectionTheaterDao;
+  @Autowired
   SectionMovieDao sectionMovieDao;
+  @Autowired
+  TicketOrmDao ticketOrmDao;
 
   @PostMapping("/girlspower/sections")
   public Section createSection(@RequestBody Section section) {
+    sectionRepository.save(section);
     int sectionId = section.getSection_id();
     sectionMovieDao.addSectionToMovie(sectionId, section.getMovie_id());
     sectionTheaterDao.addSectionToTheater(sectionId, section.getTheater_id());
@@ -74,7 +79,7 @@ public class SectionOrmDao {
     Section section = this.findSectionBySectionId(id);
     section.setMovie_id(newSection.getMovie_id());
     section.setTheater_id(newSection.getTheater_id());
-    section.setShowtime(newSection.getShowtime());
+    section.setShow_time(newSection.getShow_time());
     section.setRoom_number(newSection.getRoom_number());
     return sectionRepository.save(section);
   }
@@ -87,9 +92,8 @@ public class SectionOrmDao {
       sectionTheaterDao.removeSectionFromTheater(id, theater.getTheater_id());
       sectionMovieDao.removeSectionFromMovie(id, movie.getMovie_id());
       for(Ticket t : section.getTickets()){
-
+        ticketOrmDao.deleteTicket(t.getTicketID());
       }
       sectionRepository.deleteById(id);
-
   }
 }
