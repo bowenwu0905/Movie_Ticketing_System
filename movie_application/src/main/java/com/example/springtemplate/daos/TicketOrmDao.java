@@ -67,7 +67,7 @@ public class TicketOrmDao {
     Section section = ticket.getSection();
     Audience audience = ticket.getAudience();
     sectionTicketDao.removeTicketFromSection(ticketID, section.getSection_id());
-    audienceTicketDao.removeTicketFromAudience(ticketID, audience.getAudienceID());
+    audienceTicketDao.removeTicketFromAudience(ticketID, audience.getPersonID());
     ticketRepository.deleteById(ticketID);
   }
 }
