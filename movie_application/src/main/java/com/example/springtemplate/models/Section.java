@@ -1,10 +1,14 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Timestamp;
 import javax.persistence.Entity;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,30 @@ public class Section {
   private Integer theater_id;
   private Timestamp showtime;
   private Integer room_number;
+
+  @ManyToOne
+  @JsonIgnore
+  private Movie movie;
+
+  @ManyToOne
+  @JsonIgnore
+  private Theater theater;
+
+  public Theater getTheater() {
+    return theater;
+  }
+
+  public void setTheater(Theater theater) {
+    this.theater = theater;
+  }
+
+  public Movie getMovie() {
+    return movie;
+  }
+
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
 
   public Section(Integer section_id, Integer movie_id, Integer theater_id,
       Timestamp showtime, Integer room_number) {
