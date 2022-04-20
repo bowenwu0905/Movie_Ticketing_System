@@ -19,14 +19,10 @@ class Movies extends Component {
     state = {
         movies: [
             {
-                type: "Romance",
-                name: "lalaland",
-                id: 1
-            },
-            {
-                type: "Drama",
-                name: "Leon",
-                id: 2
+                movie_id: null,
+                movie_name: null,
+                type: null,
+
             }
         ],
         redirect:false,
@@ -39,7 +35,7 @@ class Movies extends Component {
         getAllMovies()
             .then(res => {
                 this.setState({
-                    movies: [...this.state.movies, res]
+                    movies: res
                 });
                 console.log(res);
             })
@@ -68,13 +64,13 @@ class Movies extends Component {
             >{this.state.movies.map((movie)=>(
             <div>      
             <h3>Movie Type:  {movie.type}</h3>
-            <h3>Movie Name:  {movie.name}</h3>
+            <h3>Movie Name:  {movie.movie_name}</h3>
               <Form.Item>
                 <Button onClick={()=> {
                     this.setState({
                         redirect: true,
-                        movieId: movie.id,
-                        movieName: movie.name
+                        movieId: movie.movie_id,
+                        movieName: movie.movie_name
                     });
                     console.log(this.state.redirect);
                 }} htmlType="submit" type="primary">

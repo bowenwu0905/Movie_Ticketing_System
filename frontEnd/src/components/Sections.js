@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "antd/dist/antd.css";
 import { Row, Col, Form, Button, Divider, message, Modal } from "antd";
 import {getSectionsByMovieId, createTicket} from "../utils";
+import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 const formItemLayout = {
   labelCol: {
@@ -19,40 +20,17 @@ class Sections extends Component {
         movieName: null,
         sections: [
             {
-                sectionId: 0,
-                theaterId: 1,
-                showTime: "10:30pm",
-                roomNumber: 1 
+                movie_id: 0,
+                room_number: 0,
+                section_id: 0,
+                showtime: null,
+                theater_id: 0, 
             },
-            {
-                sectionId: 1,
-                theaterId: 2,
-                showTime: "6:30pm",
-                roomNumber: 2 
-            },
-            {
-              sectionId: 1,
-              theaterId: 2,
-              showTime: "6:30pm",
-              roomNumber: 2 
-            },
-            {
-              sectionId: 1,
-              theaterId: 2,
-              showTime: "6:30pm",
-              roomNumber: 2 
-            },
-            {
-              sectionId: 1,
-              theaterId: 2,
-              showTime: "6:30pm",
-              roomNumber: 2 
-            }
         ],
         ticketInfo: {
-          sectionId: null,
-          audienceId: 0,
-          price: "$30",
+          sectionID: null,
+          audienceID: 6,
+          price: 30,
           refundable: false
         },
         showDialog: false
@@ -65,6 +43,7 @@ class Sections extends Component {
       const params = url.split("&");
       const curMovieId = params[0].substr(39, params[0].length);
       const curMovieName = params[1].substr(10, params[1].length);
+      console.log(curMovieId);
       this.setState({
         movieName: curMovieName
       })
@@ -72,7 +51,7 @@ class Sections extends Component {
         getSectionsByMovieId(parseInt(curMovieId))
               .then(res => {
                   this.setState({
-                      sections: [...this.state.sections, res]
+                      sections: res
                   });
                   console.log(res);
               })
@@ -93,7 +72,8 @@ class Sections extends Component {
     this.setState({
       showDialog: false
     });
-    createTicket(this.state.ticketInfo)
+    console.log(JSON.stringify(this.state.ticketInfo));
+    createTicket(JSON.stringify(this.state.ticketInfo))
               .then(res => {
                   console.log(res);
                   message.success("Ticket purchasing success!");
@@ -123,15 +103,21 @@ class Sections extends Component {
             >{this.state.sections.map((section)=>(
             <div>  
             <h3>Movie Name:  {this.state.movieName}</h3>    
-            <h3>Theater ID:  {section.theaterId}</h3>
-            <h3>Show Time:  {section.showTime}</h3> 
-            <h3>Room Number:  {section.roomNumber}</h3> 
-            <h3>Price:  {this.state.ticketInfo.price}</h3>
+            <h3>Theater ID:  {section.theater_id}</h3>
+            <h3>Show Time:  {section.showtime}</h3> 
+            <h3>Room Number:  {section.room_number}</h3> 
+            <h3>Price:  ${this.state.ticketInfo.price}</h3>
             <h3>Refundable:  {this.state.ticketInfo.refundable ? "Yes" : "No"}</h3>  
               <Form.Item>
                 <Button onClick={()=> {
                     this.setState({
-                        showDialog: true
+                        showDialog: true,
+                        ticketInfo: {
+                          sectionID: 5,
+                          audienceID: 6,
+                          price: 30,
+                          refundable: false
+                        }
                     });
                   }}
                 htmlType="submit" type="primary">
@@ -139,11 +125,11 @@ class Sections extends Component {
                 </Button>
               </Form.Item>
               <Modal title="Ticket Confirmation" visible={this.state.showDialog} onOk={this.handleOk} onCancel={this.handleCancel}>
-                <p>You are choosing section {section.sectionId}</p>
-                <p>The theater ID is {section.theaterId}</p>
+                <p>You are choosing section {section.section_id}</p>
+                <p>The theater ID is {section.theater_id}</p>
                 <p>For movie "{this.state.movieName}"</p>
-                <p>at {section.showTime} in room number {section.roomNumber}</p>
-                <p>the price is {this.state.ticketInfo.price}, click OK to submit</p>
+                <p>at {section.showTime} in room number {section.room_number}</p>
+                <p>the price is ${this.state.ticketInfo.price}, click OK to submit</p>
               </Modal>
               <br></br>
             </div>
