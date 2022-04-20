@@ -3,12 +3,15 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Movie;
 import com.example.springtemplate.models.Section;
 import com.example.springtemplate.models.Theater;
+import com.example.springtemplate.models.Ticket;
 import com.example.springtemplate.repositories.MovieRepository;
 import com.example.springtemplate.repositories.SectionRepository;
 import com.example.springtemplate.repositories.TheaterRepository;
+import com.example.springtemplate.repositories.TicketRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,15 +32,15 @@ public class SectionOrmDao {
   @Autowired
   MovieRepository movieRepository;
 
-/*  @Autowired
-  TicketRepository ticketRepository;*/
+  @Autowired
+  TicketRepository ticketRepository;
 
   @PostMapping("/girlspower/sections")
   public Section createSection(@RequestBody Section section) {
-    SectionMovieDao sectionMovieDao = new SectionMovieDao();
+/*    SectionMovieDao sectionMovieDao = new SectionMovieDao();
     sectionMovieDao.addSectionToMovie(section.getSection_id(), section.getMovie_id());
     SectionTheaterDao sectionTheaterDao = new SectionTheaterDao();
-    sectionTheaterDao.addSectionToTheater(section.getSection_id(), section.getTheater_id());
+    sectionTheaterDao.addSectionToTheater(section.getSection_id(), section.getTheater_id());*/
     return sectionRepository.save(section);
 
   }
@@ -54,14 +57,12 @@ public class SectionOrmDao {
 
   @GetMapping("/girlspower/sectionsByTheater/{theaterId}")
   public List<Section> findSectionsByTheaterId(@PathVariable("theaterId") Integer id){
-    Theater theater = theaterRepository.findById(id).get();
-    return theater.getSections();
+    return sectionRepository.getSectionsByTheater_id(id);
   }
 
   @GetMapping("/girlspower/sectionsByMovie/{movieId}")
   public List<Section> findSectionsByMovieId(@PathVariable("movieId") Integer id){
-    Movie movie = movieRepository.findById(id).get();
-    return movie.getSections();
+    return sectionRepository.getSectionsByMovie_id(id);
   }
 
   @PutMapping("/girlspower/sections/{sectionId}")
@@ -76,7 +77,7 @@ public class SectionOrmDao {
     return sectionRepository.save(section);
   }
 
-/*  @DeleteMapping("/girlspower/sections/{sectionId}")
+  @DeleteMapping("/girlspower/sections/{sectionId}")
   public void deleteSection(@PathVariable("sectionId") Integer id) {
     List<Ticket> tickets = ticketRepository.findTicketsBySectionId(id);
     for (Ticket ticket : tickets) {
@@ -85,5 +86,5 @@ public class SectionOrmDao {
     sectionRepository.deleteById(id);
 
 
-  }*/
+  }
 }

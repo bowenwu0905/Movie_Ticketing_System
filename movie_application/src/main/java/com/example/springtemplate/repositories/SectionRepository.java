@@ -10,4 +10,7 @@ public interface SectionRepository extends CrudRepository<Section, Integer> {
 
   @Query(value = "SELECT * FROM sections WHERE theater_id = :id", nativeQuery = true)
   public List<Section> getSectionsByTheater_id(@Param("id") Integer id);
+
+  @Query(value = "SELECT * FROM sections WHERE movie_id = :id", nativeQuery = true)
+  public List<Section> getSectionsByMovie_id(@Param("id") Integer id);
 }
