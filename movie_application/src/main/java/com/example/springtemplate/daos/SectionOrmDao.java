@@ -8,6 +8,7 @@ import com.example.springtemplate.repositories.MovieRepository;
 import com.example.springtemplate.repositories.SectionRepository;
 import com.example.springtemplate.repositories.TheaterRepository;
 import com.example.springtemplate.repositories.TicketRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -91,8 +92,12 @@ public class SectionOrmDao {
       Theater theater = section.getTheater();
       sectionTheaterDao.removeSectionFromTheater(id, theater.getTheater_id());
       sectionMovieDao.removeSectionFromMovie(id, movie.getMovie_id());
+      List<Integer> ticketsID = new ArrayList<>();
       for(Ticket t : section.getTickets()){
-        ticketOrmDao.deleteTicket(t.getTicketID());
+        ticketsID.add(t.getTicketID());
+      }
+      for(Integer i : ticketsID) {
+        ticketOrmDao.deleteTicket(i);
       }
       sectionRepository.deleteById(id);
   }

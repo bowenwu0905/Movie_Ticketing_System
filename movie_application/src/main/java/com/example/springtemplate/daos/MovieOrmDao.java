@@ -5,6 +5,7 @@ import com.example.springtemplate.models.Movie;
 import com.example.springtemplate.models.Section;
 import com.example.springtemplate.repositories.MovieRepository;
 import com.example.springtemplate.repositories.SectionRepository;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,8 @@ public class MovieOrmDao {
   MovieRepository movieRepository;
   @Autowired
   SectionRepository sectionRepository;
+  @Autowired
+  SectionOrmDao sectionOrmDao;
 
   @PostMapping("/girlspower/movies")
   public Movie createMovie(@RequestBody Movie movie){
@@ -50,8 +53,13 @@ public class MovieOrmDao {
       @PathVariable("movieId") Integer id) {
 
     List<Section> sections = this.findMovieById(id).getSections();
+    List<Integer> sectionsID = new ArrayList<>();
+
     for(Section section: sections){
-      sectionRepository.deleteById(section.getSection_id());
+      sectionsID.add(section.getSection_id());
+    }
+    for(Integer i : sectionsID){
+      sectionOrmDao.deleteSection(i);
     }
     movieRepository.deleteById(id);
 

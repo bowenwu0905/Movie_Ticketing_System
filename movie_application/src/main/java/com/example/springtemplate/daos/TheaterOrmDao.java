@@ -4,6 +4,7 @@ import com.example.springtemplate.models.Section;
 import com.example.springtemplate.models.Theater;
 import com.example.springtemplate.repositories.SectionRepository;
 import com.example.springtemplate.repositories.TheaterRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class TheaterOrmDao {
   TheaterRepository theaterRepository;
   @Autowired
   SectionRepository sectionRepository;
+  @Autowired
+  SectionOrmDao sectionOrmDao;
 
   @PostMapping("/girlspower/theaters")
   public Theater createTheater(@RequestBody Theater theater){
@@ -44,9 +47,13 @@ public class TheaterOrmDao {
   @DeleteMapping("/girlspower/theaters/{theaterId}")
   public void deleteTheater(
       @PathVariable("theaterId") Integer id) {
-    List<Section> sections = sectionRepository.getSectionsByTheater_id(id);
+    List<Section> sections = this.findTheaterById(id).getSections();
+    List<Integer> sectionsID = new ArrayList<>();
     for(Section section: sections){
-      sectionRepository.deleteById(section.getSection_id());
+      sectionsID.add(section.getSection_id());
+    }
+    for(Integer i : sectionsID) {
+      sectionOrmDao.deleteSection(i);
     }
     theaterRepository.deleteById(id);
   }
