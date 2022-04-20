@@ -5,6 +5,7 @@ import com.example.springtemplate.models.Section;
 import com.example.springtemplate.models.Ticket;
 import com.example.springtemplate.repositories.TicketRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,18 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TicketOrmDao {
+  @Autowired
   TicketRepository ticketRepository;
+  @Autowired
   AudienceTicketDao audienceTicketDao;
+  @Autowired
   SectionTicketDao sectionTicketDao;
 
-  @PostMapping("/girlspower/tickets/{section_id}/{audience_id}")
-  public Ticket createTicket(@PathVariable("section_id") int sectionID,
-      @PathVariable("audience_id") int audienceID,
-      @RequestBody Ticket ticket){
+  @PostMapping("/girlspower/tickets")
+  public Ticket createTicket(@RequestBody Ticket ticket){
     ticketRepository.save(ticket);
     int ticketID = ticket.getTicketID();
-    audienceTicketDao.addTicketToAudience(ticketID, audienceID);
-    sectionTicketDao.addTicketToSection(ticketID, sectionID);
+    audienceTicketDao.addTicketToAudience(ticketID, ticket.getAudienceID());
+    sectionTicketDao.addTicketToSection(ticketID, ticket.getSectionID());
     return ticketRepository.save(ticket);
   }
 

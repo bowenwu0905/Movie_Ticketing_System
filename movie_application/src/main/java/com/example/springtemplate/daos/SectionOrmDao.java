@@ -3,12 +3,15 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Movie;
 import com.example.springtemplate.models.Section;
 import com.example.springtemplate.models.Theater;
+import com.example.springtemplate.models.Ticket;
 import com.example.springtemplate.repositories.MovieRepository;
 import com.example.springtemplate.repositories.SectionRepository;
 import com.example.springtemplate.repositories.TheaterRepository;
+import com.example.springtemplate.repositories.TicketRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +32,8 @@ public class SectionOrmDao {
   @Autowired
   MovieRepository movieRepository;
 
-/*  @Autowired
-  TicketRepository ticketRepository;*/
+  @Autowired
+  TicketRepository ticketRepository;
 
   @PostMapping("/girlspower/sections")
   public Section createSection(@RequestBody Section section) {
@@ -76,7 +79,7 @@ public class SectionOrmDao {
     return sectionRepository.save(section);
   }
 
-/*  @DeleteMapping("/girlspower/sections/{sectionId}")
+  @DeleteMapping("/girlspower/sections/{sectionId}")
   public void deleteSection(@PathVariable("sectionId") Integer id) {
     List<Ticket> tickets = ticketRepository.findTicketsBySectionId(id);
     for (Ticket ticket : tickets) {
@@ -85,5 +88,5 @@ public class SectionOrmDao {
     sectionRepository.deleteById(id);
 
 
-  }*/
+  }
 }
