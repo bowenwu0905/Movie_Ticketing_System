@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.example.springtemplate.repositories.AudienceRepository;
+import com.example.springtemplate.repositories.SectionRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="tickets")
@@ -16,25 +19,18 @@ public class Ticket {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ticket_id")
   protected int ticketID;
+  @Column(name = "section_id")
+  protected int sectionID;
+  @Column(name = "audience_id")
+  protected int audienceID;
+  protected double price;
+  protected boolean refundable;
   @ManyToOne
   @JsonIgnore
   protected Section section;
   @ManyToOne
   @JsonIgnore
   protected Audience audience;
-  protected double price;
-  protected boolean refundable;
-
-  public Ticket() {
-  }
-
-  public Ticket(int ticketID, double price, boolean refundable) {
-    this.ticketID = ticketID;
-    this.section = null;
-    this.audience = null;
-    this.price = price;
-    this.refundable = refundable;
-  }
 
   public int getTicketID() {
     return ticketID;
@@ -42,6 +38,22 @@ public class Ticket {
 
   public void setTicketID(int ticketID) {
     this.ticketID = ticketID;
+  }
+
+  public int getSectionID() {
+    return sectionID;
+  }
+
+  public void setSectionID(int sectionID) {
+    this.sectionID = sectionID;
+  }
+
+  public int getAudienceID() {
+    return audienceID;
+  }
+
+  public void setAudienceID(int audienceID) {
+    this.audienceID = audienceID;
   }
 
   public Section getSection() {

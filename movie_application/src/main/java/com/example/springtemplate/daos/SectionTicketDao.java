@@ -4,6 +4,7 @@ import com.example.springtemplate.models.Section;
 import com.example.springtemplate.models.Ticket;
 import com.example.springtemplate.repositories.SectionRepository;
 import com.example.springtemplate.repositories.TicketRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SectionTicketDao {
 
+  @Autowired
   SectionRepository sectionRepository;
+  @Autowired
   TicketRepository ticketRepository;
 
   @GetMapping("/girlspower/addTicket/{ticket_id}/toSection/{section_id}")
