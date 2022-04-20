@@ -1,10 +1,14 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,16 +22,42 @@ public class Section {
   private Timestamp showtime;
   private Integer room_number;
 
-  public Section(Integer section_id, Integer movie_id, Integer theater_id,
-      Timestamp showtime, Integer room_number) {
-    this.section_id = section_id;
-    this.movie_id = movie_id;
-    this.theater_id = theater_id;
-    this.showtime = showtime;
-    this.room_number = room_number;
+
+
+  public Movie getMovie() {
+    return movie;
   }
 
-  public Section() {
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
+
+  @ManyToOne
+  @JsonIgnore
+  private Movie movie;
+
+  @ManyToOne
+  @JsonIgnore
+  private Theater theater;
+
+  @OneToMany(mappedBy = "section")
+  @JsonIgnore
+  private List<Ticket> tickets;
+
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
+
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
+
+  public Theater getTheater() {
+    return theater;
+  }
+
+  public void setTheater(Theater theater) {
+    this.theater = theater;
   }
 
   public Integer getSection_id() {
@@ -69,4 +99,5 @@ public class Section {
   public void setRoom_number(Integer room_number) {
     this.room_number = room_number;
   }
+
 }
