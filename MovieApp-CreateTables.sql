@@ -178,7 +178,7 @@ CREATE TABLE tickets (
     ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT fk_tickets_audience_id FOREIGN KEY (audience_id)
     REFERENCES audiences(person_id)
-	ON UPDATE CASCADE ON DELETE SET NULL
+	ON UPDATE CASCADE ON DELETE CASCADE
     );
     
 insert into tickets(price, section_id, audience_id, refundable)
