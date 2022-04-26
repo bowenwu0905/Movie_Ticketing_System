@@ -40,16 +40,16 @@ public class TheaterOrmDao {
   }
 
   @PutMapping("/girlspower/theaters/{theaterId}")
-  public Theater updateTheater(@PathVariable("theaterId") Integer id,
+  public void updateTheater(@PathVariable("theaterId") Integer id,
       @RequestBody() Theater newTheater){
     Theater theater = this.findTheaterById(id);
     theater.setTheater_name(newTheater.getTheater_name());
     theater.setAddress(newTheater.getAddress());
     theater.setCapacity(newTheater.getCapacity());
     managerTheaterDao.removeTheaterFromManager(id, theater.getManager_id());
-    theater.setTheater_id(newTheater.getTheater_id());
+    theater.setManager_id(newTheater.getManager_id());
     managerTheaterDao.addTheaterToManager(id, theater.getManager_id());
-    return theaterRepository.save(theater);
+    theaterRepository.save(theater);
   }
 
   @DeleteMapping("/girlspower/theaters/{theaterId}")

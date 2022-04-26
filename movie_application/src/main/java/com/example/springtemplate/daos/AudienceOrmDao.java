@@ -3,6 +3,7 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Audience;
 import com.example.springtemplate.models.Ticket;
 import com.example.springtemplate.repositories.AudienceRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AudienceOrmDao {
   @Autowired
   AudienceRepository audienceRepository;
+  @Autowired
   AudienceTicketDao audienceTicketDao;
 
   @PostMapping("/girlspower/audiences")
@@ -55,8 +57,12 @@ public class AudienceOrmDao {
   public void deleteAudience(@PathVariable("audienceId") int audienceID){
     Audience audience = this.findAudienceById(audienceID);
     List<Ticket> tickets = audience.getTickets();
+    List<Integer> ids = new ArrayList<>();
     for(Ticket t : tickets){
-      audienceTicketDao.removeTicketFromAudience(t.getTicketID(), audienceID);
+      ids.add(t.getTicketID());
+    }
+    for(Integer i : ids){
+      audienceTicketDao.removeTicketFromAudience(i, audienceID);
     }
     audienceRepository.deleteById(audienceID);
   }

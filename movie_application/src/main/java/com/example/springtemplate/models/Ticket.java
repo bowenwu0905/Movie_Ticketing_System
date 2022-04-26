@@ -1,16 +1,14 @@
 package com.example.springtemplate.models;
 
-import com.example.springtemplate.repositories.AudienceRepository;
-import com.example.springtemplate.repositories.SectionRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="tickets")
@@ -21,8 +19,8 @@ public class Ticket {
   protected int ticketID;
   @Column(name = "section_id")
   protected int sectionID;
-  @Column(name = "audience_id")
-  protected int audienceID;
+  @Column(name = "audience_id", nullable = true)
+  protected Integer audienceID;
   protected double price;
   protected boolean refundable;
   @ManyToOne
@@ -44,7 +42,7 @@ public class Ticket {
     return sectionID;
   }
 
-  public void setSectionID(int sectionID) {
+  public void setSectionID(Integer sectionID) {
     this.sectionID = sectionID;
   }
 
