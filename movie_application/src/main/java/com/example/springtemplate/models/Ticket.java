@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,7 +18,7 @@ public class Ticket {
   protected int ticketID;
   @Column(name = "section_id")
   protected int sectionID;
-  @Column(name = "audience_id", nullable = true)
+  @Column(name = "audience_id")
   protected Integer audienceID;
   protected double price;
   protected boolean refundable;
@@ -39,7 +38,7 @@ public class Ticket {
   }
 
   public int getSectionID() {
-    return sectionID;
+    return this.sectionID;
   }
 
   public void setSectionID(Integer sectionID) {
@@ -47,7 +46,7 @@ public class Ticket {
   }
 
   public int getAudienceID() {
-    return audienceID;
+    return this.audienceID;
   }
 
   public void setAudienceID(int audienceID) {
