@@ -29,8 +29,8 @@ class Sections extends Component {
         ],
         ticketInfo: {
           sectionID: null,
-          audienceID: 6,
-          price: 30,
+          audienceID: 4,
+          price: 30.0,
           refundable: false
         },
         showDialog: false
@@ -104,7 +104,7 @@ class Sections extends Component {
             <div>  
             <h3>Movie Name:  {this.state.movieName}</h3>    
             <h3>Theater ID:  {section.theater_id}</h3>
-            <h3>Show Time:  {section.showtime}</h3> 
+            <h3>Show Time:  10:30am</h3> 
             <h3>Room Number:  {section.room_number}</h3> 
             <h3>Price:  ${this.state.ticketInfo.price}</h3>
             <h3>Refundable:  {this.state.ticketInfo.refundable ? "Yes" : "No"}</h3>  
@@ -113,9 +113,9 @@ class Sections extends Component {
                     this.setState({
                         showDialog: true,
                         ticketInfo: {
-                          sectionID: 5,
-                          audienceID: 6,
-                          price: 30,
+                          sectionID: 4,
+                          audienceID: 4,
+                          price: 30.0,
                           refundable: false
                         }
                     });
@@ -128,7 +128,7 @@ class Sections extends Component {
                 <p>You are choosing section {section.section_id}</p>
                 <p>The theater ID is {section.theater_id}</p>
                 <p>For movie "{this.state.movieName}"</p>
-                <p>at {section.showTime} in room number {section.room_number}</p>
+                <p>at 10:30am in room number {section.room_number}</p>
                 <p>the price is ${this.state.ticketInfo.price}, click OK to submit</p>
               </Modal>
               <br></br>

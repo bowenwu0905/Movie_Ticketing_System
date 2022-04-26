@@ -21,7 +21,7 @@ class Movies extends Component {
             {
                 movie_id: null,
                 movie_name: null,
-                type: null,
+                movie_type: null,
 
             }
         ],
@@ -63,7 +63,7 @@ class Movies extends Component {
               scrollToFirstError
             >{this.state.movies.map((movie)=>(
             <div>      
-            <h3>Movie Type:  {movie.type}</h3>
+            <h3>Movie Type:  {movie.movie_type}</h3>
             <h3>Movie Name:  {movie.movie_name}</h3>
               <Form.Item>
                 <Button onClick={()=> {
