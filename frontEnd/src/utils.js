@@ -44,14 +44,12 @@ const createTicketUrl = `${SERVER_ORIGIN}/girlspower/tickets`;
 export const createTicket = (ticketInfo) => {
     return fetch(createTicketUrl, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: ticketInfo,
+        body: JSON.stringify(ticketInfo),
     }).then((response) => {
-        if (response.status !== 201) {
+        if (response.status !== 200) {
             console.log(response);
             throw Error('Fail to buy a ticket!');
         }

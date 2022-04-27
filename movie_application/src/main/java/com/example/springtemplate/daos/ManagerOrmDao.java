@@ -66,10 +66,10 @@ public class ManagerOrmDao {
     List<Employee> employees = manager.getEmployees();
     List<Theater> theaters = manager.getTheaters();
     for(Employee employee : employees){
-      managerEmployeeDao.removeEmployeeFromManager(employee.getPersonID(), employee.getManager_id());
+      employee.setManager(null);
     }
     for(Theater theater : theaters){
-      managerTheaterDao.removeTheaterFromManager(theater.getTheater_id(), theater.getManager_id());
+      theater.setManager(null);
     }
     managerRepository.delete(manager);
   }

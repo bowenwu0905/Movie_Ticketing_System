@@ -72,8 +72,7 @@ class Sections extends Component {
     this.setState({
       showDialog: false
     });
-    console.log(JSON.stringify(this.state.ticketInfo));
-    createTicket(JSON.stringify(this.state.ticketInfo))
+    createTicket(this.state.ticketInfo)
               .then(res => {
                   console.log(res);
                   message.success("Ticket purchasing success!");
