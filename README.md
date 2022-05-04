@@ -23,12 +23,15 @@ JPA and Spring for the server-side, we applied DAO to encapsulate the details of
 MySQL is our tool to manage the database.
 
 ## user_data_models_description:
-There are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
+There are 3 human end users: **audience, manager and employee**.
 The audience can search for and review all the theaters and movies, choose a section associated with a theater, a movie, a showTime, and roomNumber and buy a ticket for that section, and can also choose to review/edit/cancel the tickets they have bought.
 Managers and employees can review/edit all theaters, and create/review/edit/delete all movies, all sections, and all tickets.
 
-## Domain objects
+## domain objects
 In this project, there are 4 domain objets: **theater, section, movie and ticket**. 
+
+## user_to_user_object_relationship decsription:
+There are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
 
 ## user_to_domain_object_relationship decsription:
 There are 2 relationships between end users and domain objects. **audience to ticket** and **manager to theater**. The relationship between audience and ticket is one-to-many, an audience can buy a lot of tickets but a ticket is only related to one audience. The relationship between manager and theater is also one-to-many, one manager can manage multiple theaters and one theater can only be managed by one manager.
