@@ -13,21 +13,28 @@ Girl's power
 - Bowen Wu
 - Yihan Xu
 
-## project_description:
-This project creates a database for theater ticketing system that records information about theaters, movies, tickets etc. and the relationships among them. It is comprised of 4 domain objects, and 3 end users that inherits from people object and one enum object.
-https://docs.google.com/document/d/1r5H3o92vfOn48MSx3bB1IjQbFKBplWeJWc1dm1lMfas/edit#heading=h.fo329jz8la1c
+## problem_statement
+This project creates a database for a theater ticketing system that records information about theaters, movies, tickets, etc., and the relationships among them. It is comprised of 4 domain objects, 3 end-users that inherit from people objects, and one enum object.
+The aim of the project is to build a movie ticket booking system for users. So that the audience could book tickets from the app, managers, and employees could create/review/edit/delete all movies. A manager manages multiple employees and an employee only has one manager.
+
+## solution_statement
+The solution we implemented to solve the problem is to use React.js as the frontend tool.
+JPA and Spring for the server-side, we applied DAO to encapsulate the details of the persistence layer and provide a CRUD interface for a single entity.
+MySQL is our tool to manage the database.
 
 ## user_data_models_description:
-In this project, there are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
+There are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
+The audience can search for and review all the theaters and movies, choose a section associated with a theater, a movie, a showTime, and roomNumber and buy a ticket for that section, and can also choose to review/edit/cancel the tickets they have bought.
+Managers and employees can review/edit all theaters, and create/review/edit/delete all movies, all sections, and all tickets.
 
-## domain_object_data_models_description:
-In this project, there are 4 domain objets: **theater, section, movie and ticket**.
+## Domain objects
+In this project, there are 4 domain objets: **theater, section, movie and ticket**. 
 
 ## user_to_domain_object_relationship decsription:
 There are 2 relationships between end users and domain objects. **audience to ticket** and **manager to theater**. The relationship between audience and ticket is one-to-many, an audience can buy a lot of tickets but a ticket is only related to one audience. The relationship between manager and theater is also one-to-many, one manager can manage multiple theaters and one theater can only be managed by one manager.
 
 ## domain_object_to_domain_object_relationship decsription:
-there are multiple relationships among domain objects. For theater and movie, they are many-to-many relationship and is combined by section. In each section, is uses theater_id and movie_id as foreign key, so it is one-to-many relationship to movie and theater. Section and ticket is one-to-many relationship, each section is related to multiple tickets.
+There are multiple relationships among domain objects. For theater and movie, they are many-to-many relationship and is combined by section. In each section, is uses theater_id and movie_id as foreign key, so it is one-to-many relationship to movie and theater. Section and ticket is one-to-many relationship, each section is related to multiple tickets.
 
 ## enumeration_description:
 there is one enum in this project: **Type**, which refers to the movie types, including **drama, romance, thriller, comedy, documentary**.
