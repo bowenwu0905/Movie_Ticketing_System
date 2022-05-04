@@ -14,8 +14,8 @@ class Main extends React.Component{
         <Routes>
             <Route path="/" element={<Movies/>}/>
             <Route path="/sections" element={<Sections/>}/>
-            <Route path="/tickets" element={<Tickets/>}/>
-            <Route path="/sectionById" element={<SectionByID/>}/>
+            <Route path="/sections/tickets" element={<Tickets/>}/>
+            <Route path="/sections/tickets/sectionById" element={<SectionByID/>}/>
         </Routes>
     )
   }

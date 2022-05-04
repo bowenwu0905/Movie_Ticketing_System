@@ -16,20 +16,23 @@ const formItemLayout = {
 
 class SectionByID extends Component {
     state = {
-        sections:
-            [{
+        section:
+            {
                 movie_id: 0,
                 room_number: 0,
                 section_id: 0,
                 showtime: null,
-            }],
+                theater_id: null,
+                tickets: []
+            },
     };
 
     // get sections by movieId
     componentDidMount() {
       const url = window.location.href;
       console.log(url);
-      const curSectionId = url.substr(42, url.length);
+      const curSectionId = url.substr(61, url.length);
+      console.log(curSectionId);
       if (curSectionId !== "") {
         getSectionsBySectionId(parseInt(curSectionId))
               .then(res => {
@@ -61,15 +64,14 @@ class SectionByID extends Component {
               {...formItemLayout}
               name="section"
               scrollToFirstError
-            >{this.state.sections.map((section)=>(
+            >
             <div>  
-            <h3>Movie ID:  {section.movie_id}</h3>    
-            <h3>Theater ID:  {section.theater_id}</h3>
-            <h3>Show Time:  {section.showtime}</h3> 
-            <h3>Room Number:  {section.room_number}</h3>  
+            <h3>Movie ID:  {this.state.section.movie_id}</h3>    
+            <h3>Theater ID:  {this.state.section.theater_id}</h3>
+            <h3>Show Time:  {this.state.section.showtime}</h3> 
+            <h3>Room Number:  {this.state.section.room_number}</h3>  
               <br></br>
             </div>
-            ))}
             </Form>
           </Col>
         </Row>

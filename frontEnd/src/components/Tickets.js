@@ -32,7 +32,7 @@ class Tickets extends Component {
     componentDidMount() {
       const url = window.location.href;
       console.log(url);
-      const curAudienceId = url.substr(38, url.length);
+      const curAudienceId = url.substr(50, url.length);
       console.log(curAudienceId);
       if (curAudienceId !== "") {
         getTicketByAudienceID(parseInt(curAudienceId))
@@ -84,6 +84,8 @@ class Tickets extends Component {
                 htmlType="submit" type="primary">
                   Delete Ticket
                 </Button>
+                <br></br>
+                <br></br>
                 <Button onClick={()=> {
                     this.setState({
                       curSectionID: ticket.sectionID,
