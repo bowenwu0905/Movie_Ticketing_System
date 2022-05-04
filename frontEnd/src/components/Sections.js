@@ -29,7 +29,7 @@ class Sections extends Component {
         ],
         ticketInfo: {
           sectionID: null,
-          audienceID: 1,
+          audienceID: 4,
           price: 30,
           refundable: false
         },
@@ -117,7 +117,7 @@ class Sections extends Component {
                         showDialog: true,
                         ticketInfo: {
                           sectionID: section.section_id,
-                          audienceID: 1,
+                          audienceID: 4,
                           price: 30,
                           refundable: false,
                         }

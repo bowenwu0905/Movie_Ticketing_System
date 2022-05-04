@@ -19,7 +19,7 @@ class Top extends Component {
                 </Col>
                 <Col>
                     <nav>
-                        <Link to="/sections/tickets?audienceID=1">
+                        <Link to="/sections/tickets?audienceID=4">
                             <Button>Go To My Tickets</Button>
                         </Link>
                     </nav>
