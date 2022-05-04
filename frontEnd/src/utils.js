@@ -55,3 +55,47 @@ export const createTicket = (ticketInfo) => {
         }
     })
 }
+
+const getTicketByAudienceIDUrl = `${SERVER_ORIGIN}/girlspower/ticketsByAudience/`;
+
+export const getTicketByAudienceID = (audienceID) => {
+    return fetch(`${getTicketByAudienceIDUrl}${audienceID}`, {
+        method: 'GET',
+        redirect: 'follow'
+    }).then((response) => {
+        if (response.status !== 200) {
+            throw Error('Fail to get the tickets');
+        }
+        let data = response.json();
+        console.log(data);
+        return data;
+    })
+}
+
+const updateOrDeleteTicketByIDUrl = `${SERVER_ORIGIN}/girlspower/tickets/`;
+
+export const deleteTicketByID = (ticketID) => {
+    return fetch(`${updateOrDeleteTicketByIDUrl}${ticketID}`, {
+        method: 'DELETE',
+    }).then((response) => {
+        if (response.status !== 200 || response.status !== 204) {
+            throw Error('Fail to delete the tickets');
+        }
+    })
+}
+
+const getSectionsBySectionIdUrl = `${SERVER_ORIGIN}/girlspower/sections/`;
+
+export const getSectionsBySectionId = (sectionID) => {
+    return fetch(`${getSectionsBySectionIdUrl}${sectionID}`, {
+        method: 'GET',
+        redirect: 'follow'
+    }).then((response) => {
+        if (response.status !== 200) {
+            throw Error('Fail to get the sections');
+        }
+        let data = response.json();
+        console.log(data);
+        return data;
+    })
+}

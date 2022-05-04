@@ -16,8 +16,15 @@ class Top extends Component {
                             <img src={title} alt="title-logo" className="App-top-title-logo"/>
                         </Link>
                     </nav>
-
                 </Col>
+                <Col>
+                    <nav>
+                        <Link to="/tickets?audienceID=1">
+                            <Button>Go To My Tickets</Button>
+                        </Link>
+                    </nav>
+                </Col>
+
 
             </Row>
         )

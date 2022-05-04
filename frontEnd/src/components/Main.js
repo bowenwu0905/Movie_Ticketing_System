@@ -3,6 +3,8 @@ import {Route, Routes} from "react-router-dom";
 
 import Movies from './Movies';
 import Sections from './Sections';
+import Tickets from './Tickets';
+import SectionByID from './SectionByID';
 
 
 class Main extends React.Component{
@@ -12,6 +14,8 @@ class Main extends React.Component{
         <Routes>
             <Route path="/" element={<Movies/>}/>
             <Route path="/sections" element={<Sections/>}/>
+            <Route path="/tickets" element={<Tickets/>}/>
+            <Route path="/sectionById" element={<SectionByID/>}/>
         </Routes>
     )
   }

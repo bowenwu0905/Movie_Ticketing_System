@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "antd/dist/antd.css";
 import { Row, Col, Form, Button, Divider, message, Modal } from "antd";
 import {getSectionsByMovieId, createTicket} from "../utils";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
+import { Navigate } from "react-router-dom"
 
 const formItemLayout = {
   labelCol: {
@@ -29,11 +29,12 @@ class Sections extends Component {
         ],
         ticketInfo: {
           sectionID: null,
-          audienceID: 4,
-          price: 30.0,
+          audienceID: 1,
+          price: 30,
           refundable: false
         },
-        showDialog: false
+        showDialog: false,
+        redirect: false,
     };
 
     // get sections by movieId
@@ -81,6 +82,9 @@ class Sections extends Component {
                   console.log('failed to create ticket');
                   message.error(err.message);
               });
+    this.setState({
+      redirect: true
+    });
   };
 
   render() {
@@ -112,10 +116,10 @@ class Sections extends Component {
                     this.setState({
                         showDialog: true,
                         ticketInfo: {
-                          sectionID: 4,
-                          audienceID: 4,
-                          price: 30.0,
-                          refundable: false
+                          sectionID: section.section_id,
+                          audienceID: 1,
+                          price: 30,
+                          refundable: false,
                         }
                     });
                   }}
@@ -130,11 +134,11 @@ class Sections extends Component {
                 <p>at 10:30am in room number {section.room_number}</p>
                 <p>the price is ${this.state.ticketInfo.price}, click OK to submit</p>
               </Modal>
+              {this.state.redirect && <Navigate to={`tickets?audienceID=${this.state.ticketInfo.audienceID}`} replace={true} />}
               <br></br>
             </div>
             ))}
             </Form>
-
           </Col>
         </Row>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
