@@ -15,6 +15,7 @@ Girl's power
 
 ## project_description:
 This project creates a database for theater ticketing system that records information about theaters, movies, tickets etc. and the relationships among them. It is comprised of 4 domain objects, and 3 end users that inherits from people object and one enum object.
+https://docs.google.com/document/d/1r5H3o92vfOn48MSx3bB1IjQbFKBplWeJWc1dm1lMfas/edit#heading=h.fo329jz8la1c
 
 ## user_data_models_description:
 In this project, there are 3 human end users: **audience, manager and employee**, and they all inherits from people object. manager and employment has one-to-many relationship, a manager manages multiple employees and an employee only has one manager.
