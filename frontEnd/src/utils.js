@@ -78,9 +78,11 @@ export const deleteTicketByID = (ticketID) => {
     return fetch(`${updateOrDeleteTicketByIDUrl}${ticketID}`, {
         method: 'DELETE',
     }).then((response) => {
-        if (response.status !== 200 || response.status !== 204) {
+        console.log(response.status);
+        if (response.status !== 200 && response.status !== 204) {
             throw Error('Fail to delete the tickets');
         }
+        return response;
     })
 }
 

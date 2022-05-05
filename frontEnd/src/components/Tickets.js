@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
-import { Row, Col, Form, Button, Divider, message, Modal } from "antd";
+import { Row, Col, Form, Button, Divider, message } from "antd";
 import {getTicketByAudienceID, deleteTicketByID} from "../utils";
 import { Navigate } from "react-router-dom"
 
@@ -74,12 +74,11 @@ class Tickets extends Component {
                     deleteTicketByID(ticket.ticketID)
                     .then(res => {
                         console.log(res);
-                        message.success("Ticket Cancellation success!");
+                        message.success("Ticket Cancellation success! Please refresh page!");
                     })
                     .catch(err => {
-                        console.log('failed to cancel ticket');
-                        message.error(err.message);
-                    });
+                      message.error(err.message);
+                  });
                 }}
                 htmlType="submit" type="primary">
                   Delete Ticket
