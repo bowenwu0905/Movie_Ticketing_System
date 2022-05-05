@@ -69,7 +69,7 @@ API Docs can be found here: https://docs.google.com/document/d/1JSG1NxHEDDasLTgx
 
 **For frontend**
 cd to the frontend folder, then run **npm start**, the client could be found in http://localhost:3000/
-for the frontend we only implement some of the audience's usecases. the APIs that have been called in the client are:
+for the frontend we only implement some of the audience's usecases. (The audienceID we use here is 4, if it does not work, please try other audienceID. the code should be in Sections.js and Top.js) the APIs that have been called in the client are:
 - findAllMovies()
 - findSectionsByMovieId()
 - createTicket()
