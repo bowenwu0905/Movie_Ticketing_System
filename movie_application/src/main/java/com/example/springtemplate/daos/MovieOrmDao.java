@@ -53,14 +53,17 @@ public class MovieOrmDao {
       @PathVariable("movieId") Integer id) {
 
     List<Section> sections = this.findMovieById(id).getSections();
-    List<Integer> sectionsID = new ArrayList<>();
 
-    for(Section section: sections){
-      sectionsID.add(section.getSection_id());
+    if(sections != null){
+      List<Integer> sectionsID = new ArrayList<>();
+      for(Section section: sections){
+        sectionsID.add(section.getSection_id());
+      }
+      for(Integer i : sectionsID){
+        sectionOrmDao.deleteSection(i);
+      }
     }
-    for(Integer i : sectionsID){
-      sectionOrmDao.deleteSection(i);
-    }
+
     movieRepository.deleteById(id);
 
   }

@@ -58,11 +58,13 @@ public class TheaterOrmDao {
     Theater theater = this.findTheaterById(id);
     List<Section> sections = theater.getSections();
     List<Integer> sectionsID = new ArrayList<>();
-    for(Section section: sections){
-      sectionsID.add(section.getSection_id());
-    }
-    for(Integer i : sectionsID) {
-      sectionOrmDao.deleteSection(i);
+    if(sections != null){
+      for(Section section: sections){
+        sectionsID.add(section.getSection_id());
+      }
+      for(Integer i : sectionsID) {
+        sectionOrmDao.deleteSection(i);
+      }
     }
     managerTheaterDao.removeTheaterFromManager(id, theater.getManager_id());
     theaterRepository.deleteById(id);

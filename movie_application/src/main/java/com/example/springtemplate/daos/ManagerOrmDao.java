@@ -65,11 +65,13 @@ public class ManagerOrmDao {
     Manager manager = this.findManagerById(managerID);
     List<Employee> employees = manager.getEmployees();
     List<Theater> theaters = manager.getTheaters();
-    for(Employee employee : employees){
-      employee.setManager(null);
-    }
-    for(Theater theater : theaters){
-      theater.setManager(null);
+    if(employees != null){
+      for(Employee employee : employees){
+        employee.setManager(null);
+      }
+      for(Theater theater : theaters){
+        theater.setManager(null);
+      }
     }
     managerRepository.delete(manager);
   }

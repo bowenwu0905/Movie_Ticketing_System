@@ -94,14 +94,19 @@ public class SectionOrmDao {
       Section section = sectionRepository.findById(id).get();
       Movie movie = section.getMovie();
       Theater theater = section.getTheater();
-      sectionTheaterDao.removeSectionFromTheater(id, theater.getTheater_id());
-      sectionMovieDao.removeSectionFromMovie(id, movie.getMovie_id());
+      if(theater != null)
+        sectionTheaterDao.removeSectionFromTheater(id, theater.getTheater_id());
+      if(movie != null)
+        sectionMovieDao.removeSectionFromMovie(id, movie.getMovie_id());
+      List<Ticket> tickets = section.getTickets();
       List<Integer> ticketsID = new ArrayList<>();
-      for(Ticket t : section.getTickets()){
-        ticketsID.add(t.getTicketID());
-      }
-      for(Integer i : ticketsID) {
-        ticketOrmDao.deleteTicket(i);
+      if(tickets != null){
+        for(Ticket t : tickets){
+          ticketsID.add(t.getTicketID());
+        }
+        for(Integer i : ticketsID) {
+          ticketOrmDao.deleteTicket(i);
+        }
       }
       sectionRepository.deleteById(id);
   }

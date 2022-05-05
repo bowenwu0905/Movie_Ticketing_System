@@ -57,12 +57,14 @@ public class AudienceOrmDao {
   public void deleteAudience(@PathVariable("audienceId") int audienceID){
     Audience audience = this.findAudienceById(audienceID);
     List<Ticket> tickets = audience.getTickets();
-    List<Integer> ids = new ArrayList<>();
-    for(Ticket t : tickets){
-      ids.add(t.getTicketID());
-    }
-    for(Integer i : ids){
-      audienceTicketDao.removeTicketFromAudience(i, audienceID);
+    if(tickets != null){
+      List<Integer> ids = new ArrayList<>();
+      for(Ticket t : tickets){
+        ids.add(t.getTicketID());
+      }
+      for(Integer i : ids){
+        audienceTicketDao.removeTicketFromAudience(i, audienceID);
+      }
     }
     audienceRepository.deleteById(audienceID);
   }
