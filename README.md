@@ -1,17 +1,5 @@
-# project-SP22-bowenwu0826-liqingzhao-yihan
-project-SP22-bowenwu0826-liqingzhao-yihan
-
-
 ## project_name: 
 Movie_app
-
-## team_name:
-Girl's power
-
-## team_members:
-- Qingzhao Li
-- Bowen Wu
-- Yihan Xu
 
 ## problem_statement
 This project creates a database for a theater ticketing system that records information about theaters, movies, tickets, etc., and the relationships among them. It is comprised of 4 domain objects, 3 end-users that inherit from people objects, and one enum object.
